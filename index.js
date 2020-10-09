@@ -1,6 +1,7 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 const util = require("util");
+const { title } = require("process");
 
 const writeFileAsync = util.promisify(fs.writeFile);
 
@@ -13,8 +14,8 @@ function questionPrompt() {
         },
         {
             type: "input",
-            message: "Where do you live?",
-            name: "location"
+            message: "What is the name of your project?",
+            name: "title"
         },
         {
             type: "input",
@@ -32,7 +33,7 @@ function questionPrompt() {
         console.log(userReply)
         const readme = generateMD(userReply);
 
-        return writeFileAsync("README.md", readme)
+        return writeFileAsync("./readmeoutput/README.md", readme)
     })
     .then(function() {
         console.log("Success writing README")
@@ -41,5 +42,31 @@ function questionPrompt() {
         console.log(err);
     })
 
-      
-   
+    function generateMD(userReply) {
+        return `
+        # ${userReply.title}
+
+        ## Description
+
+        ##Table of Contents
+
+        ##Installation
+
+        ## Usage
+
+        ## License
+
+        ## Contributing
+        * **${userReply.name}** 
+
+        ## Tests   
+
+        ## Questions
+        [GithubImage](https://github.com/${userReply.githubname}.png)
+            ${userReply.githubemail}
+
+        ##Badge
+        ![badge](https://img.shields.io/github/license/${userReply.githubname}/${userReply.title})
+
+        `
+    }
