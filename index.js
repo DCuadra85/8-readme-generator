@@ -30,29 +30,16 @@ function questionPrompt() {
 
     questionPrompt().then(function(userReply){
         console.log(userReply)
-        let name = userReply.name
-        
-        let location = userReply.location
+        const readme = generateMD(userReply);
 
-        let html = `<h2>${name}</h2><br><h2>${location}</h2>`
-        writeFileAsync("index.html", html, "utf8");
-        // const userReply = {
-        //     name: "",
-        //     location: "",
-        //     linkedin: "",
-        //     github: ""
-        //   };
+        return writeFileAsync("README.md", readme)
+    })
+    .then(function() {
+        console.log("Success writing README")
+    })
+    .catch(function(err) {
+        console.log(err);
     })
 
       
-      // write code between the <p> tags to output the data from the music object above
-    //   const songSnippet = `
-    //   <div class = fun><p>${music.artist} sang ${music.song},
-    //   which was widely loved by the ${music.style}!</p>
-    //   `;
-      
-    //   const element = document.getElementById("music");
-    //   element.innerHTML = songSnippet;
-      
-    //   console.log(music);
-    //   console.log(songSnippet);
+   
