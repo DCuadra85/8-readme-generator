@@ -1,7 +1,6 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 const util = require("util");
-const { title } = require("process");
 
 const writeFileAsync = util.promisify(fs.writeFile);
 
@@ -47,8 +46,12 @@ function questionPrompt() {
         # ${userReply.title}
 
         ## Description
+        ${userReply.description}
 
         ##Table of Contents
+        - [Installation](#installation)
+        - [Usage](#usage)
+        - [License](#license)
 
         ##Installation
 
