@@ -78,11 +78,11 @@ ${answers.usage}
 ## License
 * ${answers.license} license
 
-## Contributing
-* **${answers.name}** 
-        
 ## Tests   
 ${answers.tests}
+
+## Contributing
+* **${answers.name}** 
 
 ## Questions
 ![GithubImage](https://github.com/${answers.githubname}.png)
