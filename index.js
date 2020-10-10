@@ -1,4 +1,5 @@
 const inquirer = require("inquirer");
+const axios = require("axios")
 const fs = require("fs");
 const util = require("util");
 
@@ -20,6 +21,11 @@ function questionPrompt() {
             type: "input",
             message: "Please enter a brief description of your project.",
             name: "description"
+        },
+        {
+            type: "input",
+            message: "What is the usage of this program?",
+            name: "usage"
         },
         {
             type: "input",
@@ -49,54 +55,55 @@ function questionPrompt() {
     ])
 }
 
-questionPrompt().then(function (userReply) {
-    console.log(userReply)
-    const readme = generateMD(userReply);
+function generateMD(answers) {
+    return `
+# ${answers.title}
 
-    return writeFileAsync("./readmeoutput/README.md", readme)
+## Description
+${answers.description}
+
+##Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [Contributing](#contributing)
+
+##Installation
+
+${answers.installationInstructions}
+
+## Usage
+${answers.usage}
+
+## License
+* ${answers.license} license
+
+## Contributing
+* **${answers.name}** 
+        
+## Tests   
+${answers.tests}
+
+## Questions
+![GithubImage](https://github.com/${answers.githubname}.png)
+
+[GithubEmail](mailto:${answers.githubemail})    
+
+## Badge
+![badge](https://img.shields.io/github/license/${answers.githubname}/${answers.title})
+
+`
+};
+
+
+questionPrompt().then(function (answers) {
+    console.log(answers)
+    const readme = generateMD(answers);
+    return writeFileAsync("./readmeoutput/README.md", readme, "utf8")
 })
     .then(function () {
         console.log("Success writing README")
     })
     .catch(function (err) {
         console.log(err);
-    })
-
-function generateMD(userReply) {
-    return `
-        # ${userReply.title}
-
-        ## Description
-        ${userReply.description}
-
-        ##Table of Contents
-        - [Installation](#installation)
-        - [Usage](#usage)
-        - [License](#license)
-        - [Contributing](#contributing)
-
-        ##Installation
-
-        ${userReply.installationInstructions}
-
-        ## Usage
-
-        ## License
-        * ${userReply.license} license
-
-        ## Contributing
-        * **${userReply.name}** 
-        
-        ## Tests   
-        ``````
-        ${userReply.tests}
-
-        ## Questions
-        ![GithubImage](https://github.com/${userReply.githubname}.png)
-        [GithubEmail](mailto:${userReply.githubemail})    
-
-        ##Badge
-        ![badge](https://img.shields.io/github/license/${userReply.githubname}/${userReply.title})
-
-        `
-}
+    });
