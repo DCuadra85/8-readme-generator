@@ -10,21 +10,18 @@ You will be asked a series of questions that need to be entered. Once you enter 
 Prompt Code Snippet:
 
 ```
-while (userPasswordLength < 8 || userPasswordLength > 128) {
-
-  var userPasswordLengthInput = prompt("What is the password length?");
-      if (isNaN(userPasswordLengthInput)) {
-          alert("Please enter a number.")
-          continue;
-      }
-      userPasswordLength = parseInt(userPasswordLengthInput)
-
-      if (userPasswordLength < 8 || userPasswordLength > 128) {
-        alert("Please enter a password length from 8-128 characters.")
-
-          continue;
-      }
-}
+function questionPrompt() {
+    return inquirer.prompt([
+        {
+            type: "input",
+            message: "What is your name?",
+            name: "name"
+        },
+        {
+            type: "input",
+            message: "What is the title of your project? Remember, don't use spaces.",
+            name: "title"
+        },
 ```
 
 Write Function Code:
@@ -55,17 +52,13 @@ This page's function was create through JavaScript with Node.js. Start the progr
 ## Credits
 
 * https://github.com/coding-boot-camp/
-* https://www.w3schools.com/
 * https://stackoverflow.com/questions/
-* https://www.geeksforgeeks.org/
 * https://guides.github.com/features/mastering-markdown/
-* https://developer.mozilla.org/en-US/docs/Web/HTML/
 
 
 ## Built With
 
 * [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
-* [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 * [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
 ## Deployed Link
