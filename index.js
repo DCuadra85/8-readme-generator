@@ -14,7 +14,7 @@ function questionPrompt() {
         },
         {
             type: "input",
-            message: "What is the title of your project?",
+            message: "What is the title of your project? Remember, don't use spaces.",
             name: "title"
         },
         {

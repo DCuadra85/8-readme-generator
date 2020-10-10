@@ -1,8 +1,8 @@
 
-# README Generator
+# sample
 
 ## Description
-This is an example.
+sample
 
 ##Table of Contents
 - [Installation](#installation)
@@ -12,10 +12,10 @@ This is an example.
 
 ##Installation
 
-Please use npm install inquirer.
+sample
 
 ## Usage
-To create read me files.
+sample
 
 ## License
 * MIT license
@@ -24,13 +24,13 @@ To create read me files.
 * **Daniel Cuadra** 
         
 ## Tests   
-None
+sample
 
 ## Questions
 ![GithubImage](https://github.com/DCuadra85.png)
 
 [GithubEmail](mailto:daniel.cuadra85@gmail.com)    
 
-##Badge
-![badge](https://img.shields.io/github/license/DCuadra85/README Generator)
+## Badge
+![badge](https://img.shields.io/github/license/DCuadra85/sample)
 
